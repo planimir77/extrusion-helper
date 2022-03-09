@@ -4,7 +4,7 @@
 
 The web application is designed to help [blown film extruder](https://en.wikipedia.org/wiki/Film_blowing_machine) operators
 
-<p align="center"><span align="right"> <img src="https://davis-standard.com/DS_wordpress/wp-content/uploads/2018/05/Blown-1.jpg" /></span></p>
+<p><span align="right"> <img src="https://davis-standard.com/DS_wordpress/wp-content/uploads/2018/05/Blown-1.jpg" /></span></p>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 

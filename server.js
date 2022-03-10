@@ -1,15 +1,16 @@
-//Install express server
-const express = require('express');
-const path = require('path');
+global.__basedir = __dirname;
 
-const app = express();
+require('dotenv').config();
 
-// Serve only the static files form the dist directory
-app.use(express.static('./dist/extrusion-helper'));
+const dbConnector = require('./server-root/config/db');
+const config = require('./server-root/config/config');
 
-app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/extrusion-helper/'}),
-);
+dbConnector()
+  .then(() => {
+    const app = require('express')();
 
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+    require('./server-root/config/express')(app);
+
+    app.listen(config.port, console.log(`Listening on port ${config.port}!`));
+  })
+  .catch(err => console.error(err));

@@ -1,0 +1,122 @@
+.worker {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  width: 14%;
+  max-width: 180px;
+  z-index: -1;
+}
+.pr-0 {
+    padding-right: 0px !important;
+}
+svg.material-icons {
+  height: 24px;
+  width: auto;
+}
+
+svg.material-icons:not(:last-child) {
+  margin-right: 8px;
+}
+
+.card svg.material-icons path {
+  fill: #888;
+}
+
+.card img {
+  width: inherit;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5rem;
+}
+
+.card {
+  all: unset;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  width: 480px;
+  margin: 0 8px 60px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+.card .description {
+  padding-top: 1.6rem;
+  font: caption;
+  font-size: x-large;
+  color: aliceblue;
+  border-block-start: inherit;
+}
+
+.card-container .card:not(:last-child) {
+  margin-right: 0;
+}
+
+.card.card-small {
+  height: 16px;
+  width: 168px;
+}
+
+.card-container .card:not(.highlight-card) {
+  cursor: pointer;
+}
+
+.card-container .card:not(.highlight-card):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.card-container .card:not(.highlight-card):hover .material-icons path {
+  fill: rgb(105, 103, 103);
+}
+
+.card.highlight-card {
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 30%;
+  position: relative;
+}
+
+.card.card.highlight-card span {
+  margin-left: 60px;
+}
+
+.weighing-platform {
+  padding: 0 5rem 1rem 5rem;
+}
+
+@media screen and (max-width: 767px) {
+    .card {
+        width: 360px;
+    }
+    .card .description {
+        padding-top: 1.3rem;
+    }
+    .weighing-platform {
+      padding: 0 3rem 1rem 3rem;
+    }
+}
+@media screen and (max-width: 575px) {
+    .weighing-platform {
+      padding: 0 0 1rem 0;
+    }
+    .card-container {
+        margin-left: 0px;margin-right: 0px;
+    }
+    .card {
+        width: 260px;
+    }
+    .card .description {
+        padding-top: 1rem;
+    }
+}

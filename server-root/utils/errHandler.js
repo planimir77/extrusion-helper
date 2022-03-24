@@ -6,7 +6,8 @@ function errorHandler(err, req, res, next) {
         console.error(err.stack)
         // console.log(err)
         res.status(500)
-            .json({ message: 'ErrorHandler: Something went wrong!' })
+        .json({ message: `ErrorHandler: ${err.message}!` })
+            // .json({ message: 'ErrorHandler: Something went wrong!' })
     }
     next();
 }

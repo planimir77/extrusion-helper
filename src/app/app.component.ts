@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
+import {NgbDropdown} from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'extrusion-helper';
+  title = 'Extrusion Helper';
+
+  @ViewChild('myDrop') myDrop!: NgbDropdown;
+
+  @HostListener('window:scroll') onScroll(e: Event): void {
+    this.myDrop.close();
+  }
 }

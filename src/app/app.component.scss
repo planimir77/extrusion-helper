@@ -6,7 +6,6 @@
   bottom: 0;
   z-index: -1;
   background-image: -webkit-gradient(linear, left bottom, right top, from(#6d327c), color-stop(#485DA6), color-stop(#00a1ba), color-stop(#00BF98), to(#36C486));
-  /* background-image: -webkit-linear-gradient(left bottom, #6d327c, #485DA6, #00a1ba, #00BF98, #36C486); */
   background-image: -o-linear-gradient(left bottom, #6d327c, #485DA6, #00a1ba, #00BF98, #36C486);
   background-image: linear-gradient(to right top, #6d327c, #485DA6, #00a1ba, #00BF98, #36C486);
 }
@@ -17,6 +16,7 @@
   background-color: #00162a;
   border: 1px solid dimgray;
   color: red;
+  inset: 28px -17px auto auto !important;
 }
 .dropdown-item {
   color: #eee;
@@ -71,7 +71,6 @@ p {
   left: 0;
   right: 0;
   height: 6rem;
-  // display: flex;
   align-items: center;
   background-color: #00162a;
   color: white;
@@ -313,13 +312,12 @@ svg#clouds #Path_39 {
 
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
-  .dropdown-menu {
-    font-size: 2rem;
-    inset: 0px -17px auto auto !important;
+  .dropdown-item {
+    font-size: 1.5rem;
   }
 
   .helpers {
-    font-size: xxx-large;
+    font-size: xx-large;
   }
 
   .card-container > *:not(.circle-link),
@@ -365,5 +363,8 @@ svg#clouds #Path_39 {
   }
   .content {
     margin-top: 11rem;
+  }
+  .dropdown-menu {
+    inset: 34px -17px auto auto !important;
   }
 }

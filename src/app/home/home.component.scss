@@ -7,7 +7,7 @@
   z-index: -1;
 }
 .pr-0 {
-    padding-right: 0px !important;
+  padding-right: 0px !important;
 }
 svg.material-icons {
   height: 24px;
@@ -38,7 +38,7 @@ svg.material-icons:not(:last-child) {
   border-radius: 4px;
   border: 1px solid #eee;
   width: 480px;
-  margin: 0 8px 60px;
+  margin: 60px 16px 60px;
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ svg.material-icons:not(:last-child) {
 }
 
 .card-container .card:not(:last-child) {
-  margin-right: 0;
+  // margin-right: 0;
 }
 
 .card.card-small {
@@ -94,29 +94,55 @@ svg.material-icons:not(:last-child) {
 .weighing-platform {
   padding: 0 5rem 1rem 5rem;
 }
+.img-container .img-loading {
+  position: absolute;
+  top: 200px;
+  width: 300px;
+  z-index: -1;
+  font-size: 2rem;
+  font-weight: lighter;
+  text-align: center;
+}
+.img-content {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://davis-standard.com/DS_wordpress/wp-content/uploads/2018/05/Blown-1.jpg");
+  background-position: center top;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 
 @media screen and (max-width: 767px) {
-    .card {
-        width: 360px;
-    }
-    .card .description {
-        padding-top: 1.3rem;
-    }
-    .weighing-platform {
-      padding: 0 3rem 1rem 3rem;
-    }
+  .card {
+    width: 360px;
+  }
+  .card .description {
+    padding-top: 1.3rem;
+  }
+  .weighing-platform {
+    padding: 0 3rem 1rem 3rem;
+  }
+}
+@media screen and (max-width: 699px) {
+  .img-content {
+    background-size: 125%;
+  }
 }
 @media screen and (max-width: 575px) {
-    .weighing-platform {
-      padding: 0 0 1rem 0;
-    }
-    .card-container {
-        margin-left: 0px;margin-right: 0px;
-    }
-    .card {
-        width: 260px;
-    }
-    .card .description {
-        padding-top: 1rem;
-    }
+  .img-content {
+    background-size: 145%;
+  }
+  .weighing-platform {
+    padding: 0 0 1rem 0;
+  }
+  .card-container {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .card {
+    width: 260px;
+  }
+  .card .description {
+    padding-top: 1rem;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,17 +6,22 @@ import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-    screenWidth: number | undefined;
+  imgWidth!: number;
+  imgHeight!: number;
 
-  constructor() { 
-    this.getScreenSize();
+  constructor() {
+    this.setImageSize();
   }
 
   ngOnInit(): void {
   }
 
   @HostListener('window:resize', ['$event'])
-    getScreenSize() {
-          this.screenWidth = window.innerWidth;
-    }
+  setImageSize() {
+    this.imgWidth = window.innerWidth;
+
+    this.imgHeight = this.imgWidth < 575
+      ? parseInt((this.imgWidth / 1.2).toFixed()) : this.imgWidth < 699
+        ? parseInt((this.imgWidth / 1.4).toFixed()) : parseInt((this.imgWidth / 1.753).toFixed());
+  }
 }

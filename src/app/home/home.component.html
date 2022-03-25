@@ -1,9 +1,14 @@
-<img
+<!-- <img
       class="img-blown-film"
       src="https://davis-standard.com/DS_wordpress/wp-content/uploads/2018/05/Blown-1.jpg"
       [width]="screenWidth"
       alt=""
-    />
+    /> -->
+<div class="img-container" [ngStyle]="{'width': imgWidth + 'px','height': imgHeight + 'px'}">
+  <div class="img-loading" [ngStyle]="{'width': imgWidth + 'px','height': imgHeight + 'px'}">Picture Loading...</div>
+  <div class="img-content">
+  </div>
+</div>
 <svg
   class="worker"
   xmlns="http://www.w3.org/2000/svg"
@@ -17,6 +22,7 @@
   />
 </svg>
 <div class="card-container">
+  <hr>
   <a
     class="card"
     target="_blank"

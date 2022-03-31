@@ -17,6 +17,11 @@ const routes: Routes = [
         pathMatch: 'full'
       },
     ]
+  },
+  {
+    path: 'roll-weight',
+    loadChildren: () => import('./roll-weight/roll-weight.module')
+      .then(m => m.RollWeightModule)
   }
 ];
 

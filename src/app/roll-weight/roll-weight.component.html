@@ -1,1 +1,76 @@
-<p>roll-weight works!</p>
+<h1 class="title">Размери на ролката</h1>
+<div>
+  <ngb-accordion #accordion="ngbAccordion">
+    <ngb-panel
+      id="toggle-1"
+      title="Spull: {{
+        calculator.spullDiameter
+      }} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ calculator.density }}"
+    >
+      <ng-template ngbPanelContent>
+        <div>
+          <label>Плътност</label>
+          <select>
+            <option value="0.89">LDPE Regranulat</option>
+            <option value="0.92">LDPE</option>
+            <option value="0.94">HDPE</option>
+            <option value="0.92">BOPP</option>
+            <option value="0.92">PP</option>
+            <option value="0.89">Custom</option>
+          </select>
+          <input
+            id="density"
+            #density
+            class="form-control"
+            [(ngModel)]="calculator.density"
+            type="number"
+            step=".01"
+          />
+        </div>
+        <div class="underlined"></div>
+        <div class="pt-10">
+          <label>Диаметър на шпулата</label>
+          <input
+            id="spull-d"
+            class="form-control"
+            [(ngModel)]="calculator.spullDiameter"
+            #spullD
+            type="number"
+            step=".01"
+          />
+        </div>
+        <div class="underlined"></div>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+  <div class="content">
+    <div class="pt-10">
+      <label>Ширина на ролката</label>
+      <input
+        #weight
+        class="form-control"
+        [(ngModel)]="calculator.weight"
+        (keyup)="weightKeyup($event)"
+        type="number"
+      /><span>см</span>
+    </div>
+    <div class="underlined"></div>
+    <div class="pt-10">
+      <label>Разстояние от шпулата</label>
+      <input
+        #rollR
+        class="form-control"
+        [(ngModel)]="calculator.rollR"
+        (keyup)="rollRKeyup($event)"
+        type="number"
+      /><span>см</span>
+    </div>
+    <div class="underlined"></div>
+    <div class="pt-10">
+      <label>Резултат</label>
+      <input #result class="form-control" [(ngModel)]="calculator.result" type="number" /><span
+        >кг</span
+      >
+    </div>
+  </div>
+</div>

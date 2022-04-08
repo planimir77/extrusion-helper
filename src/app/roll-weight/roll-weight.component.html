@@ -1,43 +1,42 @@
 <h1 class="title">Размери на ролката</h1>
-<div>
+<form [formGroup]="calcForm" (ngSubmit)="onSubmit(calcForm)">
   <ngb-accordion #accordion="ngbAccordion">
-    <ngb-panel
-      id="toggle-1"
-      title="Spull: {{
-        calculator.spullDiameter
-      }} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ calculator.density }}"
-    >
+    
+    <ngb-panel id="toggle-1" title="Spool: {{spoolDiameter?.value}} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ density?.value }}">
       <ng-template ngbPanelContent>
         <div>
-          <label>Плътност</label>
-          <select>
-            <option value="0.89">LDPE Regranulat</option>
-            <option value="0.92">LDPE</option>
-            <option value="0.94">HDPE</option>
-            <option value="0.92">BOPP</option>
-            <option value="0.92">PP</option>
-            <option value="0.89">Custom</option>
+          <label for="density">Плътност</label>
+          <select 
+            #selectDensity
+            formControlName="selectDensity">
+            <option *ngFor="let item of densityOptions" [ngValue]="item">{{item.key}}</option>
           </select>
           <input
-            id="density"
-            #density
+            #densityInput
+            formControlName="density"
+            (keyup)="densityInputChange(densityInput.value)"
+            (change)="densityInputChange(densityInput.value)"
             class="form-control"
-            [(ngModel)]="calculator.density"
             type="number"
             step=".01"
-          />
+          /><span>g/cm3</span>
+        </div>
+        <div *ngIf="density?.errors?.['min'] || density?.errors?.['max']" class="alert">
+          Density must be between the range of {{ densityMin}} and {{densityMax}}.
         </div>
         <div class="underlined"></div>
         <div class="pt-10">
-          <label>Диаметър на шпулата</label>
+          <label for="spoolDiameter">Диаметър на шпулата</label>
           <input
-            id="spull-d"
+            id="spoolDiameter"
+            formControlName="spoolDiameter"
             class="form-control"
-            [(ngModel)]="calculator.spullDiameter"
-            #spullD
             type="number"
             step=".01"
-          />
+          /><span>см</span>
+        </div>
+        <div *ngIf="spoolDiameter?.errors?.['min'] || spoolDiameter?.errors?.['max']" class="alert">
+          Spool diameter must be between the range of {{ min}} and {{max}}.
         </div>
         <div class="underlined"></div>
       </ng-template>
@@ -45,32 +44,46 @@
   </ngb-accordion>
   <div class="content">
     <div class="pt-10">
-      <label>Ширина на ролката</label>
-      <input
-        #weight
+      <label for="weight">Ширина на ролката</label>
+        <input
+        id="weight"
+        formControlName="weight"
         class="form-control"
-        [(ngModel)]="calculator.weight"
-        (keyup)="weightKeyup($event)"
         type="number"
       /><span>см</span>
     </div>
+    <div *ngIf="weight?.errors?.['min'] || weight?.errors?.['max']" class="alert">
+      Roll weight must be between the range of {{ min}} and {{max}}.
+    </div>
+    <div *ngIf="weight?.errors?.['pattern']" class="alert">
+      Only numbers are allowed.
+    </div>
     <div class="underlined"></div>
     <div class="pt-10">
-      <label>Разстояние от шпулата</label>
+      <label for="rollR">Разстояние от шпулата</label>
       <input
-        #rollR
+        id="rollR"
+        formControlName="rollR"
         class="form-control"
-        [(ngModel)]="calculator.rollR"
-        (keyup)="rollRKeyup($event)"
         type="number"
-      /><span>см</span>
+      />
+      <span>см</span>
+    </div>
+    <div *ngIf="rollR?.errors?.['min'] || rollR?.errors?.['max']" class="alert">
+      Distance from spool must be between the range of {{ min}} and {{max}}.
+    </div>
+    <div *ngIf="rollR?.errors?.['min']" class="alert">
+      Only positive numbers are allowed.
     </div>
     <div class="underlined"></div>
     <div class="pt-10">
       <label>Резултат</label>
-      <input #result class="form-control" [(ngModel)]="calculator.result" type="number" /><span
-        >кг</span
-      >
+      <input
+        formControlName="result"
+        class="form-control"
+        type="number"
+      />
+      <span>кг</span>
     </div>
   </div>
-</div>
+</form>

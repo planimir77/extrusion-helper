@@ -1,7 +1,7 @@
 .content {
     background-color: #ffffff99;
     margin-top: 0px;
-    padding: 0rem 3rem 3rem 3rem;
+    padding: 0rem 3rem 1.7rem 3rem;
     font-size: 16px;
     font-weight: bold;
   }
@@ -13,9 +13,6 @@
   .underlined {
     border-bottom: 1px solid gray;
     padding-top: 0.6rem;
-  }
-  label {
-    padding-top: 20px;
   }
   input {
     background-color: #ffffff99;
@@ -35,8 +32,11 @@
     text-align: center;
     margin-top: 3rem;
   }
-  .pt-10 {
-    padding-top: 10px;
+  .pb-10 {
+    padding-bottom: 10px;
+  }
+  .pt-20 {
+    padding-top: 20px;
   }
   .alert{
     color: red;
@@ -90,10 +90,31 @@
   #result {
     width: 100px;
   }
+  .density {
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
 
   @media screen and (max-width: 575px){
     .content {
         margin-top: 0;
         font-size: 18px;
+    }
+    .density label {
+      margin-right: 243px;
+      padding-bottom: 5px;
+    }
+    .density select {
+      margin: 0;
+    }
+    .rollR label{
+      margin-right: 35px;
+    }
+    .rollR input{
+      margin-left: 0;
+    }
+    option {
+      font-size: 0.8rem;
     }
   }

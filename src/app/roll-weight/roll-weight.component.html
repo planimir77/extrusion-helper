@@ -4,7 +4,7 @@
     
     <ngb-panel id="toggle-1" title="Spool: {{spoolDiameter?.value}} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ density?.value }}">
       <ng-template ngbPanelContent>
-        <div>
+        <div class="density">
           <label for="density">Плътност</label>
           <select 
             #selectDensity
@@ -25,7 +25,7 @@
           Density must be between the range of {{ densityMin}} and {{densityMax}}.
         </div>
         <div class="underlined"></div>
-        <div class="pt-10">
+        <div class="pb-10 pt-20">
           <label for="spoolDiameter">Диаметър на шпулата</label>
           <input
             id="spoolDiameter"
@@ -43,7 +43,7 @@
     </ngb-panel>
   </ngb-accordion>
   <div class="content">
-    <div class="pt-10">
+    <div class="pb-10 pt-20">
       <label for="weight">Ширина на ролката</label>
         <input
         id="weight"
@@ -59,7 +59,7 @@
       Only numbers are allowed.
     </div>
     <div class="underlined"></div>
-    <div class="pt-10">
+    <div class="rollR pb-10 pt-20">
       <label for="rollR">Разстояние от шпулата</label>
       <input
         id="rollR"
@@ -73,7 +73,7 @@
       Distance from spool must be between the range of {{ min}} and {{max}}.
     </div>
     <div class="underlined"></div>
-    <div class="pt-10">
+    <div class="pb-10 pt-20">
       <label>Резултат</label>
       <input
         formControlName="result"

@@ -72,9 +72,6 @@
     <div *ngIf="rollR?.errors?.['min'] || rollR?.errors?.['max']" class="alert">
       Distance from spool must be between the range of {{ min}} and {{max}}.
     </div>
-    <div *ngIf="rollR?.errors?.['min']" class="alert">
-      Only positive numbers are allowed.
-    </div>
     <div class="underlined"></div>
     <div class="pt-10">
       <label>Резултат</label>

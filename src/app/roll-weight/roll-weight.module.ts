@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RollWeightRoutingModule } from './roll-weight-routing.module';
 import { RollWeightComponent } from './roll-weight.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -14,10 +15,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   imports: [
     CommonModule,
     RollWeightRoutingModule,
+    SharedModule,
     NgbModule,
     ReactiveFormsModule,
   ],
-  bootstrap: [
+  exports: [
     RollWeightComponent
   ]
 })

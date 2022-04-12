@@ -1,29 +1,18 @@
 <h1 class="title">Размери на ролката</h1>
 <form [formGroup]="calcForm" (ngSubmit)="onSubmit(calcForm)">
   <ngb-accordion #accordion="ngbAccordion">
-    
-    <ngb-panel id="toggle-1" title="Spool: {{spoolDiameter?.value}} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ density?.value }}">
+    <ngb-panel
+      id="toggle-1"
+      title="Spool: {{
+        spoolDiameter?.value
+      }} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ densityInput?.value }}"
+    >
       <ng-template ngbPanelContent>
-        <div class="density">
-          <label for="density">Плътност</label>
-          <select 
-            #selectDensity
-            formControlName="selectDensity">
-            <option *ngFor="let item of densityOptions" [ngValue]="item">{{item.key}}</option>
-          </select>
-          <input
-            #densityInput
-            formControlName="density"
-            (keyup)="densityInputChange(densityInput.value)"
-            (change)="densityInputChange(densityInput.value)"
-            class="form-control"
-            type="number"
-            step=".01"
-          /><span>g/cm3</span>
-        </div>
-        <div *ngIf="density?.errors?.['min'] || density?.errors?.['max']" class="alert">
-          Density must be between the range of {{ densityMin}} and {{densityMax}}.
-        </div>
+        <app-density
+          [parentForm]="calcForm"
+          [densityOptions]="densityOptions"
+          [densityRange]="densityRange"
+        ></app-density>
         <div class="underlined"></div>
         <div class="pb-10 pt-20">
           <label for="spoolDiameter">Диаметър на шпулата</label>
@@ -35,8 +24,11 @@
             step=".01"
           /><span>см</span>
         </div>
-        <div *ngIf="spoolDiameter?.errors?.['min'] || spoolDiameter?.errors?.['max']" class="alert">
-          Spool diameter must be between the range of {{ min}} and {{max}}.
+        <div
+          *ngIf="spoolDiameter?.errors?.['min'] || spoolDiameter?.errors?.['max']"
+          class="alert"
+        >
+          Spool diameter must be between the range of {{ defaultRange.min }} and {{ defaultRange.max }}.
         </div>
         <div class="underlined"></div>
       </ng-template>
@@ -45,15 +37,18 @@
   <div class="content">
     <div class="pb-10 pt-20">
       <label for="weight">Ширина на ролката</label>
-        <input
+      <input
         id="weight"
         formControlName="weight"
         class="form-control"
         type="number"
       /><span>см</span>
     </div>
-    <div *ngIf="weight?.errors?.['min'] || weight?.errors?.['max']" class="alert">
-      Roll weight must be between the range of {{ min}} and {{max}}.
+    <div
+      *ngIf="weight?.errors?.['min'] || weight?.errors?.['max']"
+      class="alert"
+    >
+      Roll width must be between the range of {{ defaultRange.min }} and {{ defaultRange.max }}.
     </div>
     <div *ngIf="weight?.errors?.['pattern']" class="alert">
       Only numbers are allowed.
@@ -70,16 +65,12 @@
       <span>см</span>
     </div>
     <div *ngIf="rollR?.errors?.['min'] || rollR?.errors?.['max']" class="alert">
-      Distance from spool must be between the range of {{ min}} and {{max}}.
+      Distance from spool must be between the range of {{ defaultRange.min }} and {{ defaultRange.max }}.
     </div>
     <div class="underlined"></div>
     <div class="pb-10 pt-20">
       <label>Резултат</label>
-      <input
-        formControlName="result"
-        class="form-control"
-        type="number"
-      />
+      <input formControlName="result" class="form-control" type="number" />
       <span>кг</span>
     </div>
   </div>

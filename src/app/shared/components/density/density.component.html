@@ -1,0 +1,20 @@
+<div [formGroup]="parentForm" class="density">
+  <label for="densityInput">Плътност</label>
+  <select #selectDensity formControlName="selectDensity">
+    <option *ngFor="let item of densityOptions" [ngValue]="item">
+      {{ item.key }}
+    </option>
+  </select>
+  <input
+    id="densityInput"
+    (keyup)="densityInputChange(densityInput!.value)"
+    (change)="densityInputChange(densityInput!.value)"
+    formControlName="densityInput"
+    class="form-control"
+    type="number"
+    step=".01"
+  /><span>g/cm3</span>
+</div>
+<div *ngIf="densityInput?.errors?.['min'] || densityInput?.errors?.['max']" class="alert">
+    Density must be between the range of {{ densityRange.min }} and {{densityRange.max}}.
+  </div>

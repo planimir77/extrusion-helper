@@ -16,14 +16,13 @@ export class DensityComponent implements OnInit {
   selectOptionLocalValue: string | null;
   customOptionLocalValue: string | null;
 
-  constructor() { 
+  constructor() {
     this.selectOptionLocalValue = localStorage.getItem('Selected');
     this.customOptionLocalValue = localStorage.getItem('Custom');
   }
 
   ngOnInit(): void {
-    this.selectDensity?.valueChanges.subscribe(data => {
-      console.log("Density valueChanges");
+    this.densitySelect?.valueChanges.subscribe(data => {
       this.densityInput?.patchValue(Number(data.value));
       localStorage.setItem('Density', data.value);
       localStorage.setItem('Selected', data.key);
@@ -40,18 +39,15 @@ export class DensityComponent implements OnInit {
     }
   }
 
-  get selectDensity() { return this.parentForm.get('selectDensity'); }
+  get densitySelect() { return this.parentForm.get('densitySelect'); }
   get densityInput() { return this.parentForm.get('densityInput'); }
 
-  densityInputChange (inputValue: string): void {
-    console.log("densityInputChange");
-    const num: number = Number(inputValue);
-    
+  densityInputChange(inputValue: string): void {
     this.updateSelectOptionByValue(inputValue);
   }
 
   setDefaultSelectValue() {
-    this.selectDensity?.patchValue(this.densityOptions[0]);
+    this.densitySelect?.patchValue(this.densityOptions[0]);
   }
   updateSelectOptionByValue(value: string): void {
     let option = this.findDensityOptionsBy.value(value, this.densityOptions);
@@ -65,18 +61,17 @@ export class DensityComponent implements OnInit {
       localStorage.setItem('Custom', value);
       option = this.findDensityOptionsBy.key('Custom', this.densityOptions);
     }
-    
-    this.selectDensity?.patchValue(option);
+    this.densitySelect?.patchValue(option);
   }
   updateSelectOptionByKey(key: string) {
     let option = this.findDensityOptionsBy.key(key, this.densityOptions);
-    this.selectDensity?.patchValue(option);
+    this.densitySelect?.patchValue(option);
   }
   findDensityOptionsBy = {
-    key: function (key: string | null, options: { key: string, value: string}[]): any {
+    key: function (key: string | null, options: { key: string, value: string }[]): any {
       return options.find(option => option.key == key);
     },
-    value: function (value: string | null, options: { key: string, value: string}[]): any {
+    value: function (value: string | null, options: { key: string, value: string }[]): any {
       return options.find(option => option.value == value);
     },
   }

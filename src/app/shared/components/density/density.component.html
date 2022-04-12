@@ -1,6 +1,6 @@
 <div [formGroup]="parentForm" class="density">
   <label for="densityInput">Плътност</label>
-  <select #selectDensity formControlName="selectDensity">
+  <select id="densitySelect" formControlName="densitySelect">
     <option *ngFor="let item of densityOptions" [ngValue]="item">
       {{ item.key }}
     </option>

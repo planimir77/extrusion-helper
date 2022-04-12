@@ -61,7 +61,7 @@ export class RollWeightComponent implements OnInit {
         Validators.max(this.defaultRange.max),
         Validators.pattern("[0-9]*\.?[0-9]*$")]],
       result: [''],
-      selectDensity: ['']
+      densitySelect: ['']
     });
 
     this.calcForm.valueChanges.subscribe(data => {
@@ -83,7 +83,7 @@ export class RollWeightComponent implements OnInit {
   get weight() { return this.calcForm.get('weight'); }
   get rollR() { return this.calcForm.get('rollR'); }
   get result() { return this.calcForm.get('result'); }
-  get selectDensity() { return this.calcForm.get('selectDensity'); }
+  get densitySelect() { return this.calcForm.get('densitySelect'); }
   //#endregion
   onSubmit(form: FormGroup) {
     throw new Error('Not implemented.');

@@ -22,6 +22,11 @@ const routes: Routes = [
     path: 'roll-weight',
     loadChildren: () => import('./roll-weight/roll-weight.module')
       .then(m => m.RollWeightModule)
+  },
+  {
+    path: 'bag-weight',
+    loadChildren: () => import('./bag-weight/bag-weight.module')
+      .then(m => m.BagWeightModule)
   }
 ];
 

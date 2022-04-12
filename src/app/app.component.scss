@@ -73,11 +73,7 @@ p {
 }
 
 .toolbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6rem;
+  height: fit-content;
   align-items: center;
   background-color: #00162a;
   color: white;
@@ -91,6 +87,7 @@ p {
   font-weight: 600;
   margin-top: -4.2rem;
   margin-left: 70px;
+  padding-bottom: 10px;
   text-align: center;
 }
 
@@ -352,9 +349,6 @@ svg#clouds #Path_39 {
 
 @media screen and (max-width: 575px) {
   
-  .toolbar {
-    height: 11rem;
-  }
   .toolbar img {
     float: right;
     margin-right: -57px;
@@ -363,7 +357,7 @@ svg#clouds #Path_39 {
   }
 
   .toolbar .app-name {
-    margin-top: 0.4rem;
+    margin-top: 0;
     margin-left: 3rem;
     padding-right: 110px;
     text-align: start;

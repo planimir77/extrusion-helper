@@ -12,6 +12,9 @@ import { BagWeightRoutingModule } from './bag-weight-routing.module';
   imports: [
     CommonModule,
     BagWeightRoutingModule
+  ],
+  exports: [
+    BagWeightComponent
   ]
 })
 export class BagWeightModule { }

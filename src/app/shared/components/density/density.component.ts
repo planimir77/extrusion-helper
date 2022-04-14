@@ -23,7 +23,7 @@ export class DensityComponent implements OnInit {
 
   ngOnInit(): void {
     this.densitySelect?.valueChanges.subscribe(data => {
-      this.densityInput?.patchValue(Number(data.value));
+      
       localStorage.setItem('Density', data.value);
       localStorage.setItem('Selected', data.key);
     })

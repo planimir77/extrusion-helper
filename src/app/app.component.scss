@@ -16,7 +16,7 @@
   background-color: #00162a;
   border: 1px solid dimgray;
   color: red;
-  inset: 28px -17px auto auto !important;
+  inset: 24px -17px auto auto !important;
 }
 
 .dropdown-menu hr {
@@ -50,6 +50,7 @@
   color: red;
   text-align: center;
   padding-top: 5px;
+  padding-bottom: 15px;
   font-family: 'Klee One', cursive;
   font-size: 30px;
   font-weight: 600;
@@ -311,10 +312,18 @@ svg#clouds #Path_39 {
 }
 
 .weight-icon {
-  width: 32px;
+  width: 50px;
   margin-right: 0.6rem;
   fill: #eee;
   padding-bottom: 0.4rem;
+}
+.bag-weight-svg {
+  width: 60px;
+  margin-right: 15px;
+  fill: white;
+}
+.lime{
+  fill: lime;
 }
 
 /* Responsive Styles */
@@ -366,6 +375,6 @@ svg#clouds #Path_39 {
     margin-top: 100px;
   }
   .dropdown-menu {
-    inset: 34px -17px auto auto !important;
+    inset: 25px -17px auto auto !important;
   }
 }

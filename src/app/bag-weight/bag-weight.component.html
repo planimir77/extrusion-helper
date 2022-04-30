@@ -1,6 +1,123 @@
-<h1 style="margin-top: 6rem">bag weight</h1>
-<img
-  style="width: 360px"
-  src="https://cdn.pixabay.com/photo/2017/10/26/17/51/under-construction-2891888_960_720.jpg"
-  alt=""
-/>
+<form class="bag-weight-form" [formGroup]="calcForm">
+  <ngb-accordion #accordion="ngbAccordion">
+    <ngb-panel id="toggle-1" title="Density: {{ densityInput?.value }}">
+      <ng-template ngbPanelContent>
+        <app-density
+          [parentForm]="calcForm"
+          [densityOptions]="densityOptions"
+          [densityRange]="densityRange"
+        ></app-density>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+  <h1 class="title">Bag Dimensions</h1>
+  <div class="content">
+    <!-- Bag Width -->
+    <div
+      class="content-item"
+      [class.pb-0]="width?.errors?.['min'] || width?.errors?.['max']"
+    >
+      <label for="width">Width</label>
+      <div>
+        <input
+          id="width"
+          formControlName="width"
+          class="form-control"
+          type="number"
+        />
+        <span class="unit">cm</span>
+      </div>
+    </div>
+    <div *ngIf="width?.errors?.['min'] || width?.errors?.['max']" class="alert">
+      Bag width must be between the range of {{ defaultRange.min }} and
+      {{ defaultRange.max }}.
+    </div>
+    <div *ngIf="width?.errors?.['pattern']" class="alert">
+      Only numbers are allowed.
+    </div>
+    <div class="underlined"></div>
+    <!-- Bag Length -->
+    <div
+      class="length content-item"
+      [class.pb-0]="length?.errors?.['min'] || length?.errors?.['max']"
+    >
+      <label for="length">Length</label>
+      <!-- TODO: add button -->
+      <div>
+        <input
+          id="length"
+          formControlName="length"
+          class="form-control"
+          type="number"
+        />
+        <span class="unit">cm</span>
+      </div>
+    </div>
+    <div
+      *ngIf="length?.errors?.['min'] || length?.errors?.['max']"
+      class="alert"
+    >
+      Bag Length must be between the range of
+      {{ defaultRange.min }} and {{ defaultRange.max }}.
+    </div>
+    <div class="underlined"></div>
+    <!-- Thickness  -->
+    <div
+      class="thickness content-item"
+      [class.pb-0]="thickness?.errors?.['min'] || thickness?.errors?.['max']"
+    >
+      <label for="thickness">Thickness</label>
+      <!-- TODO: add button -->
+      <div>
+        <input
+          id="thickness"
+          formControlName="thickness"
+          class="form-control"
+          type="number"
+        />
+        <span class="unit">μm</span>
+      </div>
+    </div>
+    <div
+      *ngIf="thickness?.errors?.['min'] || thickness?.errors?.['max']"
+      class="alert"
+    >
+      Thickness must be between the range of
+      {{ thicknessRange.min }} and {{ thicknessRange.max }}.
+    </div>
+    <div class="underlined"></div>
+    <!-- Quantity -->
+    <div
+      class="quantity content-item"
+      [class.pb-0]="quantity?.errors?.['min'] || quantity?.errors?.['max']"
+    >
+      <label for="quantity">Quantity</label>
+      <!-- TODO: add button -->
+      <div>
+        <input
+          id="quantity"
+          formControlName="quantity"
+          class="form-control"
+          type="number"
+        />
+        <span class="unit" #quantityUnit>bag</span>
+      </div>
+    </div>
+    <div
+      *ngIf="quantity?.errors?.['min'] || quantity?.errors?.['max']"
+      class="alert"
+    >
+      Quantity must be between the range of
+      {{ quantityRange.min }} and {{ quantityRange.max }}.
+    </div>
+    <div class="underlined"></div>
+    <!-- Weight -->
+    <div class="content-result">
+      <label>Bag Weight</label>
+      <div>
+        <input formControlName="weight" class="form-control" type="number" />
+        <span class="unit" #weightUnit>gr</span>
+      </div>
+    </div>
+  </div>
+</form>

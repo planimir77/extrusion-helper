@@ -7,5 +7,8 @@ body {
 }
 .alert {
   color: red;
-  font-weight: bold;
+  width: 300px;
+}
+.underlined {
+  border-bottom: 1px solid gray;
 }

@@ -1,0 +1,65 @@
+.unit {
+  padding-top: 10px;
+}
+.pb-0 {
+  padding-bottom: 0px;
+}
+.bag-weight-form {
+  padding-top: 1rem;
+  min-width: 400px;
+}
+.content {
+  background-color: #ffffff99;
+  margin-top: 0px;
+  padding: 1.5rem 3rem 1.5rem 3rem;
+}
+.content-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.content-item div {
+  display: flex;
+}
+.content-result {
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 33px;
+  padding-bottom: 20px;
+}
+.content-result div {
+  display: flex;
+}
+.title {
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+label {
+  margin-right: 10px;
+  flex: none;
+  padding-top: 12px;
+}
+input {
+  background-color: #ffffff99;
+  // width: 80px;
+  margin-right: 5px;
+}
+::ng-deep .accordion-item:last-of-type {
+  border-bottom-right-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+}
+// ::ng-deep input.form-control {
+//   display: initial;
+// }
+::ng-deep .accordion-body {
+  padding: 1rem 3rem 0rem 3rem;
+}
+.bag-weight-form ::ng-deep .accordion-button {
+  padding-left: 3rem;
+}

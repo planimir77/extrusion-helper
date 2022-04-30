@@ -88,6 +88,17 @@ export class RollWeightComponent implements OnInit {
   onSubmit(form: FormGroup) {
     throw new Error('Not implemented.');
   }
+  rollRClicked(event: Event) {
+    throw new Error('Not implemented.');
+    // const visibility = event.currentTarget.childNodes[1].style.visibility;
+    // if (visibility != 'visible') {
+    //   event.currentTarget.childNodes[1].style.visibility ='visible';
+    //   let target = event.currentTarget.childNodes[1];
+    //   // setTimeout((target: any) => {
+    //   //   target.style.visibility ='hidden';
+    //   // }, 1000);
+    //}
+  }
   calculateResult(): void {
     this.spoolRadius = this.spoolDiameter?.value / 2;
     const rollVolume = Math.PI * Math.pow(this.spoolRadius + this.rollR?.value, 2) * this.weight?.value;
@@ -96,6 +107,6 @@ export class RollWeightComponent implements OnInit {
     this.result?.patchValue(value, { emitEvent: false });
   }
   setDefaultDensityValue() {
-    this.densityInput?.patchValue(Number(this.densityOptions[0].value))
+    this.densityInput?.patchValue(Number(this.densityOptions[0].value));
   }
 }

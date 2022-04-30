@@ -10,10 +10,7 @@
   padding: 1rem;
   text-align: center;
 }
-.underlined {
-  border-bottom: 1px solid gray;
-  padding-top: 0.6rem;
-}
+
 input {
   background-color: #ffffff99;
   width: 80px;
@@ -32,8 +29,8 @@ input {
   text-align: center;
   margin-top: 3rem;
 }
-.pb-10 {
-  padding-bottom: 10px;
+.pb-20 {
+  padding-bottom: 20px;
 }
 .pt-20 {
   padding-top: 20px;
@@ -42,17 +39,17 @@ input {
 ::ng-deep .accordion-body {
   padding: 1rem 3rem 0rem 3rem;
 }
-::ng-deep .accordion-item {
-  background-color: #ffffff99;
-  border-bottom: #ffffff99;
-}
+// ::ng-deep .accordion-item {
+//   background-color: #ffffff99;
+//   border-bottom: #ffffff99;
+// }
 ::ng-deep .accordion-item:last-of-type {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
-::ng-deep .accordion-button {
-  padding-left: 3rem;
-}
+// ::ng-deep .accordion-button {
+//   padding-left: 3rem;
+// }
 ::ng-deep input.form-control {
   display: initial;
 }
@@ -93,6 +90,31 @@ option {
   padding-bottom: 10px;
 }
 
+.mytooltip {
+  position: relative;
+  display: inline-block;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  font-size: x-large;
+  color: blue;
+  margin-left: 3px;
+}
+
+.mytooltip .tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  left: -178px;
+  top: -145px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+
+.mytooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 @media screen and (max-width: 575px) {
   .content {
     margin-top: 0;

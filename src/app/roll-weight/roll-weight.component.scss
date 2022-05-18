@@ -17,6 +17,7 @@ input {
   margin-left: 10px;
   margin-right: 5px;
 }
+
 .btn {
   display: block;
   width: 100%;
@@ -39,17 +40,12 @@ input {
 ::ng-deep .accordion-body {
   padding: 1rem 3rem 0rem 3rem;
 }
-// ::ng-deep .accordion-item {
-//   background-color: #ffffff99;
-//   border-bottom: #ffffff99;
-// }
+
 ::ng-deep .accordion-item:last-of-type {
   border-bottom-right-radius: 0rem;
   border-bottom-left-radius: 0rem;
 }
-// ::ng-deep .accordion-button {
-//   padding-left: 3rem;
-// }
+
 ::ng-deep input.form-control {
   display: initial;
 }
@@ -101,20 +97,57 @@ option {
   margin-left: 3px;
 }
 
-.mytooltip .tooltiptext {
-  visibility: hidden;
-  position: absolute;
-  left: -178px;
-  top: -145px;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 1.5s;
+.mytooltip .info-icon {
+  width: 20px;
 }
 
-.mytooltip:hover .tooltiptext {
+.mytooltip .message-icon {
+  width: 250px;
+}
+
+.mytooltip .tooltip-message {
+  visibility: hidden;
+  position: absolute;
+  left: -64px;
+  top: -265px;
+  z-index: 1;
+  opacity: 0;
+  box-shadow: 0 0 0 0.15rem #0d6efd40;
+}
+
+.mytooltip:hover .tooltip-message {
   visibility: visible;
   opacity: 1;
 }
+.rollR:focus + #rollRField {
+  box-shadow: 0 0 0 0.15rem #0d6efd40;
+}
+
+.mytooltip .tooltip-message::after {
+  content: "";
+  position: absolute;
+  top: 99%;
+  left: 46%;
+  border-width: 16px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.mytooltip:hover + #rollR {
+  background-color: white;
+  box-shadow: 0 0 0 50rem #00000080;
+}
+.mytooltip:hover + #weight {
+  background-color: white;
+  box-shadow: 0 0 0 50rem #00000080;
+}
+::ng-deep .mytooltip:hover + #toggle-1 button {
+  background-color: black !important;
+}
+.content label {
+  margin-right: 5px;
+}
+
 @media screen and (max-width: 575px) {
   .content {
     margin-top: 0;
@@ -128,13 +161,6 @@ option {
     margin: 0;
   }
   .rollR label {
-    margin-right: 35px;
     padding-bottom: 5px;
-  }
-  .rollR input {
-    margin-left: 0;
-  }
-  option {
-    font-size: 0.8rem;
   }
 }

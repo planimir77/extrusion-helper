@@ -27,8 +27,9 @@ export class DensityComponent implements OnInit {
       localStorage.setItem('Density', data.value);
       localStorage.setItem('Selected', data.key);
     })
-    
-    if (this.customOptionLocalValue) {
+
+    const lastOption = this.densityOptions[this.densityOptions.length - 1].key;
+    if (lastOption != 'Custom' && this.customOptionLocalValue) {
       this.addCustomOption();
       this.updateCustomOptionValue(this.customOptionLocalValue);
     }
@@ -51,7 +52,7 @@ export class DensityComponent implements OnInit {
     this.densitySelect?.patchValue(this.densityOptions[0]);
   }
   updateSelectOptionByValue(value: string): void {
-    if (value == null || value  == '0') {
+    if (value == null || value == '0') {
       return;
     }
     let option = this.findDensityOptionsBy.value(value, this.densityOptions);
@@ -69,7 +70,7 @@ export class DensityComponent implements OnInit {
   }
   updateSelectOptionByKey(key: string) {
     let option = this.findDensityOptionsBy.key(key, this.densityOptions);
-    this.densitySelect?.patchValue(option);
+    if (option) this.densitySelect?.patchValue(option);
   }
   findDensityOptionsBy = {
     key: function (key: string | null, options: { key: string, value: string }[]): any {

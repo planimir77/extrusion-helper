@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDensityOption, IRange } from '../shared/interfaces';
+import { DensityOptionsService } from '../shared/services/density-options.service';
 
 @Component({
   selector: 'app-roll-weight',
   templateUrl: './roll-weight.component.html',
-  styleUrls: ['./roll-weight.component.scss']
+  styleUrls: ['./roll-weight.component.scss'],
+  providers: [DensityOptionsService]
 })
 export class RollWeightComponent implements OnInit {
 
@@ -20,16 +22,11 @@ export class RollWeightComponent implements OnInit {
   densityRange!: IRange;
   defaultRange!: IRange;
 
-  densityOptions: IDensityOption[] = [
-    { key: 'LDPE Regranulate', value: '0.88', },
-    { key: 'LDPE', value: '0.92', },
-    { key: 'LLDPE', value: '0.915', },
-    { key: 'HDPE', value: '0.941', },
-    { key: 'PP', value: '0.946', },
-  ];
+  densityOptions: IDensityOption[];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, service: DensityOptionsService) {
 
+    this.densityOptions = service.getOptions();
     this.selectOptionLocalValue = localStorage.getItem('Selected');
     this.customOptionLocalValue = localStorage.getItem('Custom');
     this.densityRange = { min: 0.0898, max: 22.570 };

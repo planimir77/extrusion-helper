@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { IDensityOption, IRange } from '../shared/interfaces';
+import { DensityOptionsService } from '../shared/services/density-options.service';
 
 @Component({
   selector: 'app-bag-weight',
@@ -25,15 +26,11 @@ export class BagWeightComponent implements OnInit {
   thicknessRange!: IRange;
   quantityRange!: IRange;
 
-  densityOptions: IDensityOption[] = [
-    { key: 'LDPE Regranulate', value: '0.88', },
-    { key: 'LDPE', value: '0.92', },
-    { key: 'LLDPE', value: '0.915', },
-    { key: 'HDPE', value: '0.941', },
-    { key: 'PP', value: '0.946', },
-  ];
+  densityOptions: IDensityOption[];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, service: DensityOptionsService) {
+
+    this.densityOptions = service.getOptions();
     this.selectOptionLocalValue = localStorage.getItem('Selected');
     this.customOptionLocalValue = localStorage.getItem('Custom');
     this.densityRange = { min: 0.0898, max: 22.570 };
@@ -113,9 +110,6 @@ export class BagWeightComponent implements OnInit {
   get weight() { return this.calcForm.get('weight'); }
   //#endregion
 
-  lengthClicked(event: any) {
-
-  }
   calculateWeight(): { unit: string; value: number } {
     const widthInCm: number = this.width?.value / 100;
     const lengthInCm: number = this.length?.value / 100;

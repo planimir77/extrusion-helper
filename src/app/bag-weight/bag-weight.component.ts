@@ -15,6 +15,9 @@ export class BagWeightComponent implements OnInit {
   @ViewChild('weightUnit') weightUnit: any;
   @ViewChild('quantityUnit') quantityUnit: any;
 
+  pcs: string = 'pcs.';
+  piece: string = 'piece';
+
   spoolVolume!: number;
   spoolRadius!: number;
 
@@ -81,7 +84,7 @@ export class BagWeightComponent implements OnInit {
     this.quantity
       ?.valueChanges
       .subscribe(value => {
-        this.quantityUnit.nativeElement.innerText = value == "1" ? "bag" : "bags";
+        this.quantityUnit.nativeElement.innerText = value == "1" ? this.piece : this.pcs;
       });
 
     if (localStorage.getItem('Density')) {

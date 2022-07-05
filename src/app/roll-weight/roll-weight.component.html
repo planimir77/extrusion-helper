@@ -35,9 +35,13 @@
     </ngb-panel>
   </ngb-accordion>
   <div class="content">
-    <div class="weight pb-20 pt-20">
-      <label for="weight">Width</label>
-      <button (click)="rollRClicked($event)" class="mytooltip">
+    <div class="width pb-20 pt-20">
+      <label for="width">Width</label>
+      <button
+        (click)="rollRClicked($event)"
+        class="mytooltip"
+        aria-label="info about width"
+      >
         <span>
           <svg
             class="info-icon"
@@ -85,7 +89,11 @@
     <div class="underlined"></div>
     <div class="rollR pb-20 pt-20" id="rollRField">
       <label for="rollR">Radius</label>
-      <button (click)="rollRClicked($event)" class="mytooltip">
+      <button
+        (click)="rollRClicked($event)"
+        class="mytooltip"
+        aria-label="info about roll radius"
+      >
         <span>
           <svg
             class="info-icon"
@@ -130,7 +138,7 @@
     </div>
     <div class="underlined"></div>
     <div class="pb-20 pt-20">
-      <label>Result</label>
+      <label for="result">Result</label>
       <input formControlName="result" class="form-control" type="number" />
       <span>kg</span>
     </div>

@@ -1,6 +1,10 @@
 {
   "name": "extrusion-helper",
   "version": "1.0.0",
+  "description": "The web application is developed to help blown film extruder operators",
+  "repository": "https://github.com/planimir77/extrusion-helper",
+  "author": "Planimir Todorov <planimir7708@gmail.com>",
+  "main": "server.js",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",

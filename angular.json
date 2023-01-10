@@ -111,5 +111,8 @@
       }
     }
   },
-  "defaultProject": "extrusion-helper"
+  "defaultProject": "extrusion-helper",
+  "cli": {
+    "analytics": "638b72cd-22c6-4283-916b-e2ddfcf794fd"
+  }
 }

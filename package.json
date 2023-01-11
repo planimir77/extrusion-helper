@@ -10,6 +10,7 @@
     "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "pwa": "ng build && http-server -p 8080 -c-1 dist/extrusion-helper",
     "test": "ng test",
     "heroku-postbuild": "ng build"
   },

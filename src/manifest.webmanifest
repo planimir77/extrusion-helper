@@ -1,13 +1,29 @@
 {
   "name": "extrusion-helper",
   "short_name": "extrusion-helper",
-  "description": "An application to assist operators of blown film extruders",
+  "description": "This app helps operators of blown film extruders",
+  "categories": ["productivity"],
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
   "icons": [
+    {
+      "src": "assets/icons/icon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-36x36.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
     {
       "src": "assets/icons/icon-72x72.png",
       "sizes": "72x72",
@@ -36,11 +52,6 @@
     {
       "src": "assets/icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icons/icon-384x384.png",
-      "sizes": "384x384",
       "type": "image/png"
     },
     {

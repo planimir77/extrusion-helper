@@ -1,6 +1,7 @@
 {
   "name": "extrusion-helper",
   "short_name": "extrusion-helper",
+  "description": "An application to assist operators of blown film extruders",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

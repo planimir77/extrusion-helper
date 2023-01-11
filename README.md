@@ -2,7 +2,7 @@
 
 ## Home Page
 
-[https://extrusion-helper.herokuapp.com](https://extrusion-helper.herokuapp.com/)
+[https://extrusion-helper.vercel.app](https://extrusion-helper.vercel.app)
 
 ## About
 

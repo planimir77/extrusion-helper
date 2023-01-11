@@ -12,6 +12,26 @@ export class AppComponent {
   
   constructor(private router: Router) {}
 
+  public promptEvent: any;
+
+  @HostListener('window:beforeinstallprompt', ['$event'])
+onbeforeinstallprompt(e: { preventDefault: () => void; }) {
+  e.preventDefault();
+  this.promptEvent = e;
+}
+
+public installPWA() {
+  this.promptEvent.prompt();
+}
+
+public shouldInstall(): boolean {
+  return !this.isRunningStandalone() && this.promptEvent;
+}
+
+public isRunningStandalone(): boolean {
+  return (window.matchMedia('(display-mode: standalone)').matches);
+}
+
   @ViewChild('myDrop') myDrop!: NgbDropdown;
 
   @HostListener('window:scroll') onScroll(e: Event): void {

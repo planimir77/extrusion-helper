@@ -1,6 +1,7 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import {NgbDropdown} from '@ng-bootstrap/ng-bootstrap'
+import {NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,13 @@ import {NgbDropdown} from '@ng-bootstrap/ng-bootstrap'
 })
 export class AppComponent {
   title = 'Extrusion Helper';
+  public updateAvailable: boolean = false;
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private swUpdate: SwUpdate) {
+    this.swUpdate.available.subscribe(evt => {
+      this.updateAvailable = true;
+    });
+  }
 
   public promptEvent: any;
 
@@ -30,6 +36,10 @@ public shouldInstall(): boolean {
 
 public isRunningStandalone(): boolean {
   return (window.matchMedia('(display-mode: standalone)').matches);
+}
+
+public reload() {
+  this.swUpdate.activateUpdate().then(() => document.location.reload());
 }
 
   @ViewChild('myDrop') myDrop!: NgbDropdown;

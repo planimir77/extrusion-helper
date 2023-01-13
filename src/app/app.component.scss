@@ -354,6 +354,18 @@ svg#clouds #Path_39 {
 .lime {
   fill: lime;
 }
+.install, .update {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px 15px;
+    font-weight: 300;
+    border-radius: 15px;
+    background-color: #00162a;
+    color: antiquewhite;
+    border: 2px solid red;
+}
+
 
 /* Responsive Styles */
 @media screen and (max-width: 767px) {

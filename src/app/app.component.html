@@ -131,10 +131,11 @@
 
   <a routerLink="/">
     <img
+      class="help-logo"
       width="44"
       height="44"
       alt="Help Logo"
-      src="/assets/icons/Icon-72x72.png"
+      src="/assets/icons/icon-72x72.png"
     />
   </a>
 
@@ -143,7 +144,7 @@
 
 <div class="content" role="main">
   <div class="bg"></div>
-  <button *ngIf="shouldInstall()" class="install" (click)="installPWA()">Install App<img src="/assets/icons/Icon-16x16.png" style="padding-left: 5px;" alt="Application Logo"></button>
+  <button *ngIf="shouldInstall()" class="install" (click)="installPWA()">Install App<img src="/assets/icons/icon-16x16.png" style="padding-left: 5px;" alt="Application Logo"></button>
   <button *ngIf="updateAvailable" class="update" (click)="reload()">Update available. Click to refresh</button>
   <router-outlet></router-outlet>
 

@@ -28,7 +28,7 @@
           *ngIf="spoolDiameter?.errors?.['min'] || spoolDiameter?.errors?.['max']"
           class="alert"
         >
-          Spool diameter must be between the range of {{ defaultRange.min }} and
+          Spool diameter must be between <br />the range of {{ defaultRange.min }} and
           {{ defaultRange.max }}.
         </div>
       </ng-template>
@@ -38,7 +38,6 @@
     <div class="width pb-20 pt-20">
       <label for="width">Width</label>
       <button
-        (click)="rollRClicked($event)"
         class="mytooltip"
         aria-label="info about width"
       >
@@ -70,27 +69,29 @@
         </span>
       </button>
       <input
-        id="weight"
-        formControlName="weight"
+        id="width"
+        formControlName="width"
         class="form-control"
-        type="number"
+        type="tel"
+        [style.width.px]="widthValue"
+        (keyup)="onKeyUp($event)"
+        appAutoWidth
       /><span>cm</span>
     </div>
     <div
-      *ngIf="weight?.errors?.['min'] || weight?.errors?.['max']"
+      *ngIf="width?.errors?.['min'] || width?.errors?.['max']"
       class="alert"
     >
-      Roll width must be between the range of {{ defaultRange.min }} and
+      Roll width must be between<br /> the range of {{ defaultRange.min }} and
       {{ defaultRange.max }}.
     </div>
-    <div *ngIf="weight?.errors?.['pattern']" class="alert">
-      Only numbers are allowed.
+    <div *ngIf="width?.errors?.['pattern']" class="alert">
+      Еxample with folds 40+2*10
     </div>
     <div class="underlined"></div>
     <div class="rollR pb-20 pt-20" id="rollRField">
       <label for="rollR">Radius</label>
       <button
-        (click)="rollRClicked($event)"
         class="mytooltip"
         aria-label="info about roll radius"
       >
@@ -133,13 +134,13 @@
       <span>cm</span>
     </div>
     <div *ngIf="rollR?.errors?.['min'] || rollR?.errors?.['max']" class="alert">
-      Distance from spool must be between the range of
+      Distance from spool must be between <br />the range of
       {{ defaultRange.min }} and {{ defaultRange.max }}.
     </div>
     <div class="underlined"></div>
     <div class="pb-20 pt-20">
       <label for="result">Result</label>
-      <input formControlName="result" class="form-control" type="number" />
+      <input id="result" formControlName="result" class="form-control" type="number" />
       <span>kg</span>
     </div>
   </div>

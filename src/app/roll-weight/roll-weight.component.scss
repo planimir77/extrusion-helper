@@ -79,7 +79,7 @@ option {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 #result {
-  width: 100px;
+  width: 85px;
 }
 .density {
   padding-top: 5px;
@@ -137,7 +137,7 @@ option {
   background-color: white;
   box-shadow: 0 0 0 50rem #00000080;
 }
-.mytooltip:hover + #weight {
+.mytooltip:hover + #width {
   background-color: white;
   box-shadow: 0 0 0 50rem #00000080;
 }
@@ -147,6 +147,9 @@ option {
 .content label {
   margin-right: 5px;
 }
+// #width {
+//   width: 110px;
+// }
 
 @media screen and (max-width: 575px) {
   .content {

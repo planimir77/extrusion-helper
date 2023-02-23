@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { RollWeightComponent } from './roll-weight.component';
 
@@ -8,6 +10,10 @@ describe('RollWeightComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ 
+        ReactiveFormsModule,
+        NgbModule,
+      ],
       declarations: [ RollWeightComponent ]
     })
     .compileComponents();

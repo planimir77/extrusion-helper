@@ -27,10 +27,10 @@ export class RollWeightComponent implements OnInit {
   widthValue: number;
 
   constructor(private fb: FormBuilder, service: DensityOptionsService) {
-
+    
     this.densityOptions = service.getOptions();
-    this.selectOptionLocalValue = localStorage.getItem('Selected');
-    this.customOptionLocalValue = localStorage.getItem('Custom');
+    this.selectOptionLocalValue = localStorage.getItem('Selected-Roll-Density');
+    this.customOptionLocalValue = localStorage.getItem('Custom-Roll-Density');
     this.densityRange = { min: 0.0898, max: 22.570 };
     this.defaultRange = { min: 1, max: 1000 };
     this.widthValue = 80;
@@ -72,8 +72,8 @@ export class RollWeightComponent implements OnInit {
       }
     });
 
-    if (localStorage.getItem('Density')) {
-      this.densityInput?.patchValue(Number(localStorage.getItem('Density')));
+    if (localStorage.getItem('Roll-Density')) {
+      this.densityInput?.patchValue(Number(localStorage.getItem('Roll-Density')));
     }
     else {
       this.setDefaultDensityValue();
@@ -118,6 +118,12 @@ export class RollWeightComponent implements OnInit {
     this.densityInput?.patchValue(Number(this.densityOptions[0].value));
   }
   onKeyUp(event: any) {
+    if (event.target.value.includes(',')) {
+      const currentInput = event.target.id;
+      //const aa = this.calcForm.get(`${currentInput}`);
+      const value = event.target.value.replace(',','.');
+      this.calcForm.get(`${currentInput}`)?.patchValue(value);
+    }
     this.widthValue = event.target.value.length > 6 
     ? 80 + (9 * (event.target.value.length - 6))
     : 80;

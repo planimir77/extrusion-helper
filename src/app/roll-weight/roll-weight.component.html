@@ -1,12 +1,11 @@
-<h1 class="title">Roll Dimensions</h1>
-<form [formGroup]="calcForm" (ngSubmit)="onSubmit(calcForm)">
+<form [formGroup]="calcForm" class="roll-weight-form" (ngSubmit)="onSubmit(calcForm)">
   <ngb-accordion #accordion="ngbAccordion">
     <ngb-panel
-      id="toggle-1"
-      title="Spool: {{
+    id="toggle-1"
+    title="Spool: {{
         spoolDiameter?.value
       }} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ densityInput?.value }}"
-    >
+      >
       <ng-template ngbPanelContent>
         <app-density
           [parentForm]="calcForm"
@@ -34,6 +33,7 @@
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
+  <h1 class="title">Roll Dimensions</h1>
   <div class="content">
     <div class="width pb-20 pt-20">
       <label for="width">Width</label>
@@ -127,6 +127,7 @@
       </button>
       <input
         id="rollR"
+        (keyup)="onKeyUp($event)"
         formControlName="rollR"
         class="form-control"
         type="number"

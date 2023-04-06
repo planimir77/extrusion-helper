@@ -17,17 +17,17 @@ export class DensityComponent implements OnInit {
   customOptionLocalValue: string | null;
 
   constructor() {
-    this.selectOptionLocalValue = localStorage.getItem('Selected');
-    this.customOptionLocalValue = localStorage.getItem('Custom');
+    this.selectOptionLocalValue = "";
+    this.customOptionLocalValue = ""
   }
 
   ngOnInit(): void {
+
     this.densitySelect?.valueChanges.subscribe(data => {
       this.densityInput?.patchValue(Number(data.value));
-      localStorage.setItem('Density', data.value);
-      localStorage.setItem('Selected', data.key);
+      this.isBagForm() ? this.setLocalStorigeBagItems(data) : this.setLocalStorigeRollItems(data);
     })
-
+    this.isBagForm() ? this.getLocalStorigeBagItems() : this.getLocalStorigeRollItems();
     const lastOption = this.densityOptions[this.densityOptions.length - 1].key;
     if (lastOption != 'Custom' && this.customOptionLocalValue) {
       this.addCustomOption();
@@ -40,6 +40,14 @@ export class DensityComponent implements OnInit {
       this.setDefaultSelectValue();
     }
   }
+  getLocalStorigeBagItems() {
+    this.selectOptionLocalValue = localStorage.getItem('Bag-Selected');
+    this.customOptionLocalValue = localStorage.getItem('Bag-Custom');
+  }
+  getLocalStorigeRollItems() {
+    this.selectOptionLocalValue = localStorage.getItem('Roll-Selected');
+    this.customOptionLocalValue = localStorage.getItem('Roll-Custom');
+  }
 
   get densitySelect() { return this.parentForm.get('densitySelect'); }
   get densityInput() { return this.parentForm.get('densityInput'); }
@@ -49,7 +57,7 @@ export class DensityComponent implements OnInit {
   }
 
   setDefaultSelectValue() {
-    this.densitySelect?.patchValue(this.densityOptions[0]);
+    this.isBagForm() ? this.densitySelect?.patchValue(this.densityOptions[1]) : this.densitySelect?.patchValue(this.densityOptions[0]);
   }
   updateSelectOptionByValue(value: string): void {
     if (value == null || value == '0') {
@@ -63,7 +71,8 @@ export class DensityComponent implements OnInit {
         this.addCustomOption();
       }
       this.updateCustomOptionValue(value);
-      localStorage.setItem('Custom', value);
+      this.isBagForm() ? localStorage.setItem('Bag-Custom', value) : localStorage.setItem('Roll-Custom', value);
+      
       option = this.findDensityOptionsBy.key('Custom', this.densityOptions);
     }
     this.densitySelect?.patchValue(option);
@@ -86,5 +95,18 @@ export class DensityComponent implements OnInit {
   addCustomOption() {
     this.densityOptions.push({ key: 'Custom', value: '', });
   }
+  isBagForm () {
+    return this.parentForm.controls['thickness'] ? true : false;
+  }
 
+  setLocalStorigeBagItems(data: any) {
+    localStorage.setItem('Bag-Density', data.value);
+    localStorage.setItem('Bag-Selected', data.key);
+  }
+  setLocalStorigeRollItems(data: any) {
+    localStorage.setItem('Roll-Density', data.value);
+    localStorage.setItem('Roll-Selected', data.key);
+  }
 }
+
+

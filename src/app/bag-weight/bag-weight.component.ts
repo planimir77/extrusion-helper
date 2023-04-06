@@ -34,8 +34,8 @@ export class BagWeightComponent implements OnInit {
   constructor(private fb: FormBuilder, service: DensityOptionsService) {
 
     this.densityOptions = service.getOptions();
-    this.selectOptionLocalValue = localStorage.getItem('Selected');
-    this.customOptionLocalValue = localStorage.getItem('Custom');
+    this.selectOptionLocalValue = localStorage.getItem('Bag-Selected');
+    this.customOptionLocalValue = localStorage.getItem('Bag-Custom');
     this.densityRange = { min: 0.0898, max: 22.570 };
     this.defaultRange = { min: 1, max: 1000 };
     this.thicknessRange = { min: 1, max: 2000 };
@@ -86,16 +86,15 @@ export class BagWeightComponent implements OnInit {
       .subscribe(value => {
         this.quantityUnit.nativeElement.innerText = value == "1" ? this.piece : this.pcs;
       });
-
-    if (localStorage.getItem('Density')) {
-      this.densityInput?.patchValue(Number(localStorage.getItem('Density')));
+    if (localStorage.getItem('Bag-Density')) {
+      this.densityInput?.patchValue(Number(localStorage.getItem('Bag-Density')));
     }
     else {
       this.setDefaultDensityValue();
     }
   }
   setDefaultDensityValue() {
-    this.densityInput?.patchValue(Number(this.densityOptions[0].value));
+    this.densityInput?.patchValue(Number(this.densityOptions[1].value));
   }
   refreshWeight() {
     const weight = this.calculateWeight();

@@ -6,8 +6,6 @@
 }
 .bag-weight-form {
   padding-top: 1rem;
-  min-width: 340px;
-  width: min-content;
 }
 .content {
   background-color: #ffffff99;
@@ -59,7 +57,7 @@ input {
 //   display: initial;
 // }
 ::ng-deep .accordion-body {
-  padding: 1rem 3rem 0rem 3rem;
+  padding: 1rem 3rem 1rem 3rem;
 }
 .bag-weight-form ::ng-deep .accordion-button {
   padding-left: 3rem;

@@ -1,3 +1,6 @@
+.red-shadow {
+  box-shadow: 0 0 0 0.3rem red;
+}
 .underlined {
   border-bottom: 1px solid gray;
   padding-top: 0.6rem;
@@ -45,7 +48,6 @@ option {
 }
 .density {
   padding-top: 5px;
-  padding-bottom: 20px;
 }
 .flex {
   display: flex;

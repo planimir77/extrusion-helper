@@ -1,6 +1,6 @@
 <form class="bag-weight-form" [formGroup]="calcForm">
   <ngb-accordion #accordion="ngbAccordion">
-    <ngb-panel id="toggle-1" title="Density: {{ densityInput?.value }}">
+    <ngb-panel id="toggle-1" title="Density: {{ densityInput?.value?.toLocaleString()}}">
       <ng-template ngbPanelContent>
         <app-density
           [parentForm]="calcForm"

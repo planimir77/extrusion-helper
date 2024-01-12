@@ -17,6 +17,8 @@
         id="densityInput"
         (keyup)="densityInputChange(densityInput!.value)"
         (change)="densityInputChange(densityInput!.value)"
+        [ngClass]="{'red-shadow': densityInput?.errors?.['required'] || densityInput?.errors?.['min'] || densityInput?.errors?.['max']}"
+        placeholder="*"
         formControlName="densityInput"
         class="form-control"
         type="number"
@@ -25,10 +27,13 @@
     </div>
   </div>
 </div>
+<div *ngIf="densityInput?.errors?.['required']" class="alert">
+  Field is required!
+</div>
 <div
   *ngIf="densityInput?.errors?.['min'] || densityInput?.errors?.['max']"
   class="alert"
 >
-  Density must be between the range of {{ densityRange.min }} and
-  {{ densityRange.max }}.
+  Density must be between the range of {{ densityRange.min.toLocaleString() }} and
+  {{ densityRange.max.toLocaleString() }}.
 </div>

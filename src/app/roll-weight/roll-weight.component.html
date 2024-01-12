@@ -1,46 +1,53 @@
-<form [formGroup]="calcForm" class="roll-weight-form" (ngSubmit)="onSubmit(calcForm)">
+<form
+  [formGroup]="calcForm"
+  class="roll-weight-form"
+  (ngSubmit)="onSubmit(calcForm)"
+>
   <ngb-accordion #accordion="ngbAccordion">
     <ngb-panel
-    id="toggle-1"
-    title="Spool: {{
-        spoolDiameter?.value
-      }} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ densityInput?.value }}"
-      >
+      id="toggle-1"
+      title="Spool: {{
+        spoolDiameter?.value?.toLocaleString()
+      }} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ densityInput?.value?.toLocaleString() }}"
+    >
       <ng-template ngbPanelContent>
         <app-density
           [parentForm]="calcForm"
           [densityOptions]="densityOptions"
           [densityRange]="densityRange"
         ></app-density>
-        <div class="underlined"></div>
-        <div class="pb-20 pt-20">
-          <label for="spoolDiameter">Spool Diameter</label>
+        <div class="underlined pt-20"></div>
+        <div class="pt-20">
+          <label for="spoolDiameter">* Spool Diameter</label>
           <input
             id="spoolDiameter"
             formControlName="spoolDiameter"
+            (keyup)="onKeyUp($event)"
+            [ngClass]="{'red-shadow': spoolDiameter?.errors?.['required'] || spoolDiameter?.errors?.['min'] || spoolDiameter?.errors?.['max']}"
+            placeholder="*"
             class="form-control"
             type="number"
             step=".01"
           /><span>cm</span>
         </div>
+        <div *ngIf="spoolDiameter?.errors?.['required']" class="alert">
+          Field is required!
+        </div>
         <div
           *ngIf="spoolDiameter?.errors?.['min'] || spoolDiameter?.errors?.['max']"
           class="alert"
         >
-          Spool diameter must be between <br />the range of {{ defaultRange.min }} and
-          {{ defaultRange.max }}.
+          Spool diameter must be between <br />the range of
+          {{ defaultRange.min.toLocaleString() }} and {{ defaultRange.max.toLocaleString() }}.
         </div>
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
   <h1 class="title">Roll Dimensions</h1>
   <div class="content">
-    <div class="width pb-20 pt-20">
+    <div class="width pt-20">
       <label for="width">Width</label>
-      <button
-        class="mytooltip"
-        aria-label="info about width"
-      >
+      <button class="mytooltip" aria-label="info about width">
         <span>
           <svg
             class="info-icon"
@@ -70,31 +77,32 @@
       </button>
       <input
         id="width"
+        name="width"
         formControlName="width"
         class="form-control"
+        [ngClass]="{'red-shadow': (width?.invalid && width?.errors?.['required'] && width?.touched) || width?.errors?.['min'] || width?.errors?.['max']}"
         type="tel"
         [style.width.px]="widthValue"
         (keyup)="onKeyUp($event)"
         appAutoWidth
       /><span>cm</span>
     </div>
-    <div
-      *ngIf="width?.errors?.['min'] || width?.errors?.['max']"
-      class="alert"
-    >
-      Roll width must be between<br /> the range of {{ defaultRange.min }} and
-      {{ defaultRange.max }}.
+    <div *ngIf="width?.invalid && width?.errors && width?.touched">
+      <div *ngIf="width?.errors?.['required']" class="alert">
+        Field is required!
+      </div>
+    </div>
+    <div *ngIf="width?.errors?.['min'] || width?.errors?.['max']" class="alert">
+      Roll width must be between<br />
+      the range of {{ defaultRange.min.toLocaleString() }} and {{ defaultRange.max.toLocaleString() }}.
     </div>
     <div *ngIf="width?.errors?.['pattern']" class="alert">
       Еxample with folds 40+2*10
     </div>
-    <div class="underlined"></div>
-    <div class="rollR pb-20 pt-20" id="rollRField">
+    <div class="underlined pt-20"></div>
+    <div class="rollR pt-20" id="rollRField">
       <label for="rollR">Radius</label>
-      <button
-        class="mytooltip"
-        aria-label="info about roll radius"
-      >
+      <button class="mytooltip" aria-label="info about roll radius">
         <span>
           <svg
             class="info-icon"
@@ -128,6 +136,7 @@
       <input
         id="rollR"
         (keyup)="onKeyUp($event)"
+        name="rollR"
         formControlName="rollR"
         class="form-control"
         type="number"
@@ -136,12 +145,19 @@
     </div>
     <div *ngIf="rollR?.errors?.['min'] || rollR?.errors?.['max']" class="alert">
       Distance from spool must be between <br />the range of
-      {{ defaultRange.min }} and {{ defaultRange.max }}.
+      {{ defaultRange.min.toLocaleString() }} and {{ defaultRange.max.toLocaleString() }}.
     </div>
-    <div class="underlined"></div>
-    <div class="pb-20 pt-20">
+    <div class="underlined pt-20"></div>
+    <div class="pt-20">
       <label for="result">Result</label>
-      <input id="result" formControlName="result" class="form-control" type="number" />
+      <input
+        (keyup)="onKeyUp($event)"
+        name="result"
+        id="result"
+        formControlName="result"
+        class="form-control"
+        type="number"
+      />
       <span>kg</span>
     </div>
   </div>

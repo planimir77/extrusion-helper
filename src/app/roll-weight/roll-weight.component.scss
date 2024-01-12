@@ -1,3 +1,6 @@
+.red-shadow {
+  box-shadow: 0 0 0 0.3rem red;
+}
 .roll-weight-form {
   padding-top: 1rem;
   min-width: 340px;
@@ -42,7 +45,7 @@ input {
 }
 
 ::ng-deep .accordion-body {
-  padding: 1rem 3rem 0rem 3rem;
+  padding: 1rem 3rem 1rem 3rem;
 }
 
 ::ng-deep .accordion-item:last-of-type {

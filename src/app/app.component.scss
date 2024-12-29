@@ -325,9 +325,6 @@ svg#clouds #Path_39 {
   .dropdown-item {
     font-size: 1.5rem;
   }
-  .helpers {
-    font-size: 32px;
-  }
   .card:not(.highlight-card) {
     height: 16px;
     margin: 8px 0;
@@ -361,6 +358,7 @@ svg#clouds #Path_39 {
   }
   .dropdown-menu {
     inset: 25px -17px auto auto !important;
+    width: 370px !important;
   }
   .content {
     display: block;

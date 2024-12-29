@@ -1,17 +1,17 @@
 <div [formGroup]="parentForm" class="density">
   <div class="child">
     <label class="density-select-label" for="densitySelect"
-      >Select Density</label
+      >{{'Select Density' | translate}}</label
     >
     <select id="densitySelect" formControlName="densitySelect">
       <option *ngFor="let item of densityOptions" [ngValue]="item">
-        {{ item.key }}
+        {{ item.key | translate }}
       </option>
     </select>
   </div>
-  <div class="hr-line">or</div>
+  <div class="hr-line">{{'or' | translate}}</div>
   <div class="child">
-    <label class="density-input-label" for="densityInput">Set Density</label>
+    <label class="density-input-label" for="densityInput">{{'Set Density' | translate}}</label>
     <div class="flex">
       <input
         id="densityInput"
@@ -23,17 +23,17 @@
         class="form-control"
         type="number"
         step=".01"
-      /><span class="density-unit">g/cm3</span>
+      /><span class="density-unit">{{'g/cm3' | translate}}</span>
     </div>
   </div>
 </div>
 <div *ngIf="densityInput?.errors?.['required']" class="alert">
-  Field is required!
+  {{'The field is required!' | translate}}
 </div>
 <div
   *ngIf="densityInput?.errors?.['min'] || densityInput?.errors?.['max']"
   class="alert"
 >
-  Density must be between the range of {{ densityRange.min.toLocaleString() }} and
-  {{ densityRange.max.toLocaleString() }}.
+  {{'Density must be in the range of' | translate}} {{ densityRange.min.toLocaleString() }} {{'to' | translate}}
+  {{ densityRange.max.toLocaleString() }}
 </div>

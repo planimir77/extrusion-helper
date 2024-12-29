@@ -13,11 +13,11 @@ import { SharedModule } from '../shared/shared.module';
     RollWeightComponent,
   ],
   imports: [
-    CommonModule,
-    RollWeightRoutingModule,
-    SharedModule,
     NgbModule,
+    CommonModule,
+    SharedModule,
     ReactiveFormsModule,
+    RollWeightRoutingModule,
   ],
   exports: [
     RollWeightComponent

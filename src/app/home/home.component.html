@@ -1,18 +1,13 @@
 <!-- width: imgWidth + 'px', -->
-<div
-  class="img-container"
-  [ngStyle]="{  height: imgHeight + 'px' }"
->
-<!-- [ngStyle]="{ width: imgWidth + 'px', height: imgHeight + 'px' }" -->
-  <div
-    class="img-loading"
-  >
-    Picture Loading...
+<div class="img-container" [ngStyle]="{ height: imgHeight + 'px' }">
+  <!-- [ngStyle]="{ width: imgWidth + 'px', height: imgHeight + 'px' }" -->
+  <div class="img-loading">
+    {{ "Picture Loading..." | translate }}
   </div>
   <div class="img-content"></div>
 </div>
 <svg class="worker" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2098 5725">
-  <title>Worker</title>
+  <title>{{ "Worker" | translate }}</title>
   <use xlink:href="../../assets/svg/icons.svg#worker"></use>
 </svg>
 <div class="card-container">
@@ -24,7 +19,10 @@
       alt="weighing platform with ldpe rolls"
     />
     <div class="description">
-      Calculate the weight of the roll depending on the plastic used.
+      {{
+        "Calculate the weight of the roll depending on the plastic used."
+          | translate
+      }}
     </div>
   </a>
   <a class="card" rel="noopener" routerLink="/bag-weight">
@@ -33,6 +31,8 @@
       src="/assets/img/weighing-platform-with-fish-in-a-bag.webp"
       alt="weighing platform with fish in a bag"
     />
-    <div class="description">Calculate the weight of the bag.</div>
+    <div class="description">
+      {{ "Calculate the weight of the bag." | translate }}
+    </div>
   </a>
 </div>

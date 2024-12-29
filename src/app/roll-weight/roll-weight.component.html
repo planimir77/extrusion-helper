@@ -6,9 +6,9 @@
   <ngb-accordion #accordion="ngbAccordion">
     <ngb-panel
       id="toggle-1"
-      title="Spool: {{
+      title="{{'Spool' | translate}}: {{
         spoolDiameter?.value?.toLocaleString()
-      }} &nbsp;&nbsp; | &nbsp;&nbsp; Density: {{ densityInput?.value?.toLocaleString() }}"
+      }} &nbsp;&nbsp; | &nbsp;&nbsp; {{'Density' | translate}}: {{ densityInput?.value?.toLocaleString() }}"
     >
       <ng-template ngbPanelContent>
         <app-density
@@ -18,7 +18,8 @@
         ></app-density>
         <div class="underlined pt-20"></div>
         <div class="pt-20">
-          <label for="spoolDiameter">* Spool Diameter</label>
+          <!-- Spool Diameter -->
+          <label for="spoolDiameter">{{'Spool Diameter' | translate}}</label>
           <input
             id="spoolDiameter"
             formControlName="spoolDiameter"
@@ -31,22 +32,24 @@
           /><span>cm</span>
         </div>
         <div *ngIf="spoolDiameter?.errors?.['required']" class="alert">
-          Field is required!
+          {{'The field is required!' | translate}}
         </div>
         <div
           *ngIf="spoolDiameter?.errors?.['min'] || spoolDiameter?.errors?.['max']"
           class="alert"
         >
-          Spool diameter must be between <br />the range of
-          {{ defaultRange.min.toLocaleString() }} and {{ defaultRange.max.toLocaleString() }}.
+          {{'Spool Diameter' | translate}} {{'must be in the range of' | translate}}
+          {{ defaultRange.min.toLocaleString() }} {{'to' | translate}} {{ defaultRange.max.toLocaleString() }}.
         </div>
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
-  <h1 class="title">Roll Dimensions</h1>
+  <!-- Roll Dimensions -->
+  <h1 class="title">{{'Roll Dimensions' | translate}}</h1>
   <div class="content">
     <div class="width pt-20">
-      <label for="width">Width</label>
+      <!-- Width -->
+      <label for="width">{{'Width' | translate}}</label>
       <button class="mytooltip" aria-label="info about width">
         <span>
           <svg
@@ -89,19 +92,19 @@
     </div>
     <div *ngIf="width?.invalid && width?.errors && width?.touched">
       <div *ngIf="width?.errors?.['required']" class="alert">
-        Field is required!
+        {{'The field is required!' | translate}}
       </div>
     </div>
     <div *ngIf="width?.errors?.['min'] || width?.errors?.['max']" class="alert">
-      Roll width must be between<br />
-      the range of {{ defaultRange.min.toLocaleString() }} and {{ defaultRange.max.toLocaleString() }}.
+      {{'The Roll width' | translate}} 
+      {{'must be in the range of' | translate}} {{ defaultRange.min.toLocaleString() }} {{'to' | translate}} {{ defaultRange.max.toLocaleString() }}.
     </div>
-    <div *ngIf="width?.errors?.['pattern']" class="alert">
-      Еxample with folds 40+2*10
+    <div *ngIf="width?.errors?.['pattern']" class="info">
+      {{'Еxample with folds' | translate}} 40+2*10
     </div>
     <div class="underlined pt-20"></div>
     <div class="rollR pt-20" id="rollRField">
-      <label for="rollR">Radius</label>
+      <label for="rollR">{{'Radius' | translate}}</label>
       <button class="mytooltip" aria-label="info about roll radius">
         <span>
           <svg
@@ -144,12 +147,13 @@
       <span>cm</span>
     </div>
     <div *ngIf="rollR?.errors?.['min'] || rollR?.errors?.['max']" class="alert">
-      Distance from spool must be between <br />the range of
-      {{ defaultRange.min.toLocaleString() }} and {{ defaultRange.max.toLocaleString() }}.
+      {{'From the spool to the end of the roll, it' | translate}} {{'must be in the range of' | translate}}
+      {{ defaultRange.min.toLocaleString() }} {{'to' | translate}} {{ defaultRange.max.toLocaleString() }}.
     </div>
     <div class="underlined pt-20"></div>
     <div class="pt-20">
-      <label for="result">Result</label>
+      <!-- Result -->
+      <label for="result">{{'Roll Weight' | translate}}</label>
       <input
         (keyup)="onKeyUp($event)"
         name="result"
@@ -158,7 +162,8 @@
         class="form-control"
         type="number"
       />
-      <span>kg</span>
+      <!-- kg -->
+      <span>{{'kg' | translate}}</span>
     </div>
   </div>
 </form>

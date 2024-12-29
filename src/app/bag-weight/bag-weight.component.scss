@@ -25,11 +25,14 @@
 }
 .content-result {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   font-size: 18px;
   font-weight: bold;
   padding-top: 33px;
   padding-bottom: 20px;
+}
+.content-result input {
+  font-size: 1.2rem;
 }
 .content-result div {
   display: flex;

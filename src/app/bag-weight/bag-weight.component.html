@@ -1,6 +1,6 @@
 <form class="bag-weight-form" [formGroup]="calcForm">
   <ngb-accordion #accordion="ngbAccordion">
-    <ngb-panel id="toggle-1" title="Density: {{ densityInput?.value?.toLocaleString()}}">
+    <ngb-panel id="toggle-1" title="{{'Density' | translate}}: {{ densityInput?.value?.toLocaleString()}}">
       <ng-template ngbPanelContent>
         <app-density
           [parentForm]="calcForm"
@@ -10,14 +10,14 @@
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
-  <h1 class="title">Bag Dimensions</h1>
+  <h1 class="title">{{'Bag Dimensions' | translate}}</h1>
   <div class="content">
     <!-- Bag Width -->
     <div
       class="content-item"
       [class.pb-0]="width?.errors?.['min'] || width?.errors?.['max']"
     >
-      <label for="width">Width</label>
+      <label for="width">{{'Width' | translate}}</label>
       <div>
         <input
           id="width"
@@ -29,11 +29,11 @@
       </div>
     </div>
     <div *ngIf="width?.errors?.['min'] || width?.errors?.['max']" class="alert">
-      Bag width must be between the range of {{ defaultRange.min }} and
+      {{'The Bag width' | translate}} {{'must be in the range of' | translate}} {{ defaultRange.min }} {{'to' | translate}}
       {{ defaultRange.max }}.
     </div>
     <div *ngIf="width?.errors?.['pattern']" class="alert">
-      Only numbers are allowed.
+      {{'Only numbers are allowed.' | translate}}
     </div>
     <div class="underlined"></div>
     <!-- Bag Length -->
@@ -41,7 +41,7 @@
       class="length content-item"
       [class.pb-0]="length?.errors?.['min'] || length?.errors?.['max']"
     >
-      <label for="length">Length</label>
+      <label for="length">{{'Length' | translate}}</label>
       <!-- TODO: add button -->
       <div>
         <input
@@ -57,8 +57,8 @@
       *ngIf="length?.errors?.['min'] || length?.errors?.['max']"
       class="alert"
     >
-      Bag Length must be between the range of
-      {{ defaultRange.min }} and {{ defaultRange.max }}.
+      {{'Bag Length' | translate}} {{'must be in the range of' | translate}}
+      {{ defaultRange.min }} {{'to' | translate}} {{ defaultRange.max }}.
     </div>
     <div class="underlined"></div>
     <!-- Thickness  -->
@@ -66,7 +66,7 @@
       class="thickness content-item"
       [class.pb-0]="thickness?.errors?.['min'] || thickness?.errors?.['max']"
     >
-      <label for="thickness">Thickness</label>
+      <label for="thickness">{{'Thickness' | translate}}</label>
       <!-- TODO: add button -->
       <div>
         <input
@@ -82,8 +82,8 @@
       *ngIf="thickness?.errors?.['min'] || thickness?.errors?.['max']"
       class="alert"
     >
-      Thickness must be between the range of
-      {{ thicknessRange.min }} and {{ thicknessRange.max }}.
+       {{'Thickness must be in the range of' | translate}}
+      {{ thicknessRange.min }} {{'to' | translate}} {{ thicknessRange.max }} μm.
     </div>
     <div class="underlined"></div>
     <!-- Quantity -->
@@ -91,7 +91,7 @@
       class="quantity content-item"
       [class.pb-0]="quantity?.errors?.['min'] || quantity?.errors?.['max']"
     >
-      <label for="quantity">Quantity</label>
+      <label for="quantity">{{'Quantity' | translate}}</label>
       <!-- TODO: add button -->
       <div>
         <input
@@ -100,24 +100,25 @@
           class="form-control"
           type="number"
         />
-        <span class="unit" #quantityUnit>bag</span>
+        <span class="unit" #quantityUnit>{{'pcs' | translate}}.</span>
       </div>
     </div>
     <div
       *ngIf="quantity?.errors?.['min'] || quantity?.errors?.['max']"
       class="alert"
     >
-      Quantity must be between the range of
-      {{ quantityRange.min }} and {{ quantityRange.max }}.
+      {{'Quantity must be in the range of' | translate}}
+      {{ quantityRange.min }} {{'to' | translate}} {{ quantityRange.max }}.
     </div>
     <div class="underlined"></div>
     <!-- Weight -->
     <div class="content-result">
-      <label>Bag Weight</label>
+      <label>{{'Weight'| translate}}</label>
       <div>
-        <input formControlName="weight" class="form-control" type="number" />
-        <span class="unit" #weightUnit>gr</span>
+        <input formControlName="weight" class="form-control" [style.width.px]='weightWidth' type="text" />
+        <span class="unit" #weightUnit></span>
       </div>
     </div>
+    <span #hiddenEl id='hiddenEl' style="visibility: hidden;position: absolute;font-size: 1.2rem;">test</span>
   </div>
 </form>

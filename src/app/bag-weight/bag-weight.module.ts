@@ -6,6 +6,7 @@ import { BagWeightComponent } from './bag-weight.component';
 import { BagWeightRoutingModule } from './bag-weight-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { TranslatePipe } from '../shared/services/translate/translate.pipe';
 
 
 
@@ -14,14 +15,15 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     BagWeightComponent
   ],
   imports: [
+    NgbModule,
     CommonModule,
+    SharedModule,
     ReactiveFormsModule,
     BagWeightRoutingModule,
-    SharedModule,
-    NgbModule
   ],
   exports: [
     BagWeightComponent
-  ]
+  ],
+  providers: [TranslatePipe]
 })
 export class BagWeightModule { }

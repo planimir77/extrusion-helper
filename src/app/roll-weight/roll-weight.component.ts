@@ -69,7 +69,6 @@ export class RollWeightComponent implements OnInit {
       rollR: [
         '',
         [
-          //Validators.required,
           Validators.min(this.defaultRange.min),
           Validators.max(this.defaultRange.max),
           Validators.pattern('[0-9]*.?[0-9]*$'),
@@ -85,13 +84,6 @@ export class RollWeightComponent implements OnInit {
       ],
       densitySelect: [''],
     });
-
-    // this.calcForm.valueChanges.subscribe(data => {
-    //   debugger;
-    //   if (this.calcForm.valid) {
-    //     this.calculateResult();
-    //   }
-    // });
 
     if (localStorage.getItem('Roll-Density')) {
       this.densityInput?.patchValue(

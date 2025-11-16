@@ -62,7 +62,7 @@ export class AppComponent {
 
   @ViewChild('myDrop') myDrop!: NgbDropdown;
 
-  @HostListener('window:scroll') onScroll(e: Event): void {
+  @HostListener('window:scroll') onScroll(): void {
     this.hideMenu();
     this.languageModalContainerProp = false;
   }
